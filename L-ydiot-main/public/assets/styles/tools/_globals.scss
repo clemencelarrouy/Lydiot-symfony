@@ -1,0 +1,35 @@
+html{
+  color: $darkMainColor;
+  font-size: $defaultFontSize;
+
+  body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    main{
+      display: flex;
+      flex-direction: column;
+      gap: 4em;
+      section{
+        padding: 0 1em;
+        &:first-of-type{
+          padding-top: $hauteurMenu;
+        }
+        div.wrapper-section{
+          max-width: $max-width;
+          width: 100%;
+          margin: 0 auto;
+          h2, h1{
+            font-family: $displayFont;
+            font-weight: bold;
+            color: $darkMainColor;
+            font-size: 3em;
+          }
+          h1{
+            font-size: 4em;
+          }
+        }
+      }
+    }
+  }
+}

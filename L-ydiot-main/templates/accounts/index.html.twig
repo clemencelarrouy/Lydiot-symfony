@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lydiot | Vos comptes{% endblock %}
+
+{% block body %}
+    <section class="accounts" style="margin: 1em auto; max-width: 800px;">
+        <div class="wrapper-section"  >
+            {% for message in app.flashes('success') %}
+                <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+                    <div class="flex">
+                        <div>
+                            <p class="font-bold">{{ message }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <h1>Les comptes de {{ app.user.surname }}  </h1>
+
+            <ul>
+
+                <li class="add-account"><a href="{{ path('create_account') }}"><span class="material-icons">add</span>Ajouter un compte</a></li>
+                {% for account in accountList %}
+                    {% if account.status != "archive" %}
+
+                    <li class="accounts">
+                        <a href="{{ path('accountsSingle', {accountId: account.accountId}) }}">
+                            <bdi class="montant">{{account.money}}<span class="devise">€</span></bdi>
+                            <span class="nom-compte">{{ account.nomCompte|capitalize }}</span>
+                        </a>
+                    </li>
+
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+{% endblock %}

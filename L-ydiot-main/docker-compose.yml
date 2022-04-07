@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:13
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: lydiot
+      POSTGRES_PASSWORD: lydiot
+      POSTGRES_DB: lydiot
+    volumes:
+      - dbdata:/var/lib/postgresql/data/
+  loan-adminer:
+    image: adminer
+    ports:
+      - 18080:8080
+volumes:
+  dbdata:
+    driver: local
